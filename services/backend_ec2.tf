@@ -2,7 +2,7 @@ module "ec2_cluster_backend" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   version                = "1.21.0"
 
-  instance_count         = 1
+  instance_count         = 2
   name                   = "${var.prefix}-${var.region}-${var.stage}-${var.component}-backend"
 
   ami                    = "${var.ami_backend}"

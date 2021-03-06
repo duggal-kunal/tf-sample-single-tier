@@ -60,6 +60,54 @@ module "alb_all_1" {
   */
 }
 
+module "asg_mysample" {
+  source = "terraform-aws-modules/autoscaling/aws"
+
+  lc_name = "myexample-lc"
+
+  image_id        = "${var.ami_backend}"
+  instance_type   = "${var.instance_type_backend}"
+  security_groups = ["${module.sg_backend.this_security_group_id}"]
+
+  ebs_block_device = [
+    {
+      device_name           = "/dev/xvdz"
+      volume_type           = "gp2"
+      volume_size           = "50"
+      delete_on_termination = true
+    },
+  ]
+
+  root_block_device = [
+    {
+      volume_size = "50"
+      volume_type = "gp2"
+    },
+  ]
+
+  # Auto scaling group
+  asg_name                  = "myexample-asg"
+  vpc_zone_identifier       = ["${data.terraform_remote_state.infra.private_subnets}"]
+  health_check_type         = "EC2"
+  min_size                  = 1
+  max_size                  = 2
+  desired_capacity          = 2
+  wait_for_capacity_timeout = 0
+
+  tags = [
+    {
+      key                 = "Environment"
+      value               = "stg"
+      propagate_at_launch = true
+    },
+    {
+      key                 = "Project"
+      value               = "mySample"
+      propagate_at_launch = true
+    },
+  ]
+}
+
 module "elb_sg_all_1" {
   source = "terraform-aws-modules/security-group/aws"
   #version = "~> 1.66.0"
