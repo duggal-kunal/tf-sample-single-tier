@@ -8,6 +8,7 @@ Repo contains terraform files (.tf) for a web based application.
 - Minimum ports used for communication (80, 443, 8092 [application])
 - Use of individual modules and variables instead of hardcoded values/names (scalable)
 - Separation of TF files (per resource) for managable code changes
+- Backend configured for S3
 - Root priviledges not required
 - Security
 - Appropriate comments and proper naming conventions followed
@@ -26,3 +27,9 @@ Repo contains terraform files (.tf) for a web based application.
 
 ### Apply Changes
 ```terraform apply```
+
+### Check for specific module
+```
+terraform plan -target module.module_name
+terraform apply -target module.module_name
+```
