@@ -2,7 +2,15 @@
 Repo contains terraform files (.tf) for a web based application.
 
 ## Design Principles
-Basic web application that has frontend and backend instances in public and private subnets respectively. The backend instances are auto-scaled and both tiers are using ALBs to manage load across the instances (2 for each tier). 
+> Basic web application that has frontend and backend instances in public and private subnets respectively. The backend instances are auto-scaled and both tiers are using ALBs to manage load across the instances (2 for each tier). 
+
+## Features
+- Minimum ports used for communication (80, 443, 8092 [application])
+- Use of individual modules and variables instead of hardcoded values/names (scalable)
+- Separation of TF files (per resource) for managable code changes
+- Root priviledges not required
+- Security
+- Appropriate comments and proper naming conventions followed
 
 ## Infra Module
 **Role:** Creates resources such as VPC and Subnets.
