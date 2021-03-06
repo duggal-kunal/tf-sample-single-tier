@@ -1,0 +1,4 @@
+resource "aws_key_pair" "deployer" {
+  key_name   = "mysamplekeypair"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAxEykpNJtJ2oZWTUAnV10oLK4DkcjOFHW4CR0SwI67bC2+DnxYo7Bade0iubQ1ls8N3HaPLXpyavJ7qzkWmLmY/ul9XH99QEhW7Pls6p144OrUeWh6C+y021Ut5pWAHmucZx3Z6I9GOu1DgB/lmNIg+wlllG7nhcj1zv2MQKXBxXKgs5uXgWxz086f9KsVgjh3hRun/ViapcjhoMZbxDS2iRVaifDMLz6Fyh/7fhUm6GTsaa1gbb1tVPsvtBKMvcFjnn1WVu3TgjYbPtHBYm3MXx5sWsAImxFBaao7tmk26iYPyg1BOGeHg4aDAt8LZP5LzXykCPxtYcDWDiq6MStBw== rsa-key-20200220"
+}
